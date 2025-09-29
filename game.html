@@ -1,0 +1,34 @@
+<html>
+<head>
+</head>
+<body>
+<canvas id="game" width="1000" height="550">
+</canvas>
+ <script>
+      var game = document.getElementById("game"),
+        ctx       = game.getContext('2d'), // Контекст
+        pic       = new Image();              // "Создаём" изображение
+      pic.src    = 'game.png';  // Источник изображения, позаимствовано на хабре
+      pic.onload = function() {    // Событие onLoad, ждём момента пока загрузится изображение
+        ctx.drawImage(pic, 0, 0);  // Рисуем изображение от точки с координатами 0, 0
+      }
+	  
+	  function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+      var canvas = document.getElementById('game');
+      var context = canvas.getContext('2d');
+
+      canvas.addEventListener('mousemove', function(evt) {
+        var mousePos = getMousePos(canvas, evt);
+		data = context.getImageData(mousePos.x, mousePos.y, 1, 1).data;
+        var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y + ' color R:'+ data[0]+' G:'+ data[1] + ' B:' +data[2];
+        console.log(message);
+      }, false);
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+﻿<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/football.css">
+<link rel="shortcut icon" href="image/ico.ico" type="image/x-icon" />
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/lightbox.min.js"></script>
+<link href="css/lightbox.css" rel="stylesheet"/>
+</head>
+<body>
+<ul class="nef">
+<li><a href="index.html">Главная</a></li>
+<li><a href="football2.html">Правила Игры</a></li>
+<li><a href="#">Футбольные Лиги</a>
+<ul>
+<li><a href="football3.html">Ла Лига</a></li>
+<li><a href="football4.html">Премьер Лига</a></li>
+<li><a href="football5.html">Серия А</a></li>
+</ul>
+</li>
+<li><a href="#">Лучшие Футболисты Мира</a>
+<ul>
+<li><a href="lionel messi.html">Лионель Месси</a></li>
+<li><a href="Crishtianu Ronaldu.html">Криштиану Роналду</a></li>
+<li><a href="Garet Bale.html">Гарет Бейл</a></li>
+<li><a href="Eden Hazard.html">Эден Азар</a></li>
+<li><a href="Zlatan Ibragimovich.html">Златан Ибрагимович</a></li>
+</ul>
+</li>
+<li><a href="#">Лучшие Футболисты Украины</a>
+<ul>
+<li><a href="Iarmolenko.html">Андрей Ярмоленко</a></li>
+<li><a href="Konoplianka.html">Евгений Коноплянка</a></li>
+</ul>
+</li>
+<li><a href="galery.html">Галерея</a></li>
+<li><a href="video.php">Видео</a></li>
+<li><a href="vidgyk.php">Отзыв</a></li>
+<li><a href="play.html">Играть в футбол</a></li>
+</ul>
+<button id="start" class="log" onclick="go();" >Пуск!</button>
+<button id="kick" class="log" onclick="boom();" >Бить!</button>
+<button id="kick-hard" class="log" onclick="hardboom();">Сильно бить</button>
+<button id="stop" class="log" onclick="stop();">Остановить мяч</button>
+<div id="pol">
+	<img src="image/football33.png" class="bool">
+	<img src="image/football31.jpg">
+
+</div>
+<script>
+ function go(){
+alert('Игра начинаеться!')
+$('.bool').animate({'left':'410px'},100).animate({'top':'260px'},100);
+}
+function boom() {
+$('.bool').animate({'left':'900px'},2000).animate({'top':'250px'},1000);
+}
+function hardboom() {
+$('.bool').animate({'left':'900px'},500).animate({'top':'150px'},500)
+}
+function stop() {
+$('.bool').stop();
+}
+
+function move(ll, tt) {
+t = parseInt($('#ball').css('top'));
+l = parseInt($('#ball').css('left'));
+l = l + ll;
+t = t + tt;
+$('.bool').animate({
+'left': l,
+'top': t},1000);
+}
+
+function render(){
+//console.log("hello");
+}
+
+setInterval(render, 2000);
+$(document).ready(function(){
+	$("body").keydown(function(e){
+    // left arrow
+    if ((e.keyCode || e.which) == 37)
+    {   
+		left = parseInt($('.goal').css('left'));
+		if(left>0) {
+			left -= 5;
+			$('.goal').css('left', left);
+		}
+    }
+	if ((e.keyCode || e.which) == 38)
+    {   
+         top = parseInt($('.goal').css('top'));
+		if(top>0) {
+			top -= 5;
+			$('.goal').css('top', top);;
+			}
+    }
+    // right arrow
+    if ((e.keyCode || e.which) == 39)
+    {
+         left = parseInt($('.goal').css('left'));
+		if(left>0) {
+			left += 5;
+			$('.goal').css('left', left);
+		}
+    } 
+	if ((e.keyCode || e.which) == 40)
+    {   
+         top = parseInt($('.goal').css('top'));
+		if(top>0) {
+			top += 5;
+			$('.goal').css('top', top);;
+			}
+    }
+});
+
+
+});
+</script>
+</body>
+</html>
